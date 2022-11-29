@@ -1,9 +1,16 @@
 import { Dropdown } from "antd";
 import React, { useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Input, Button } from "../Generic";
+import { uzeReplace } from "../../hooks/useReplace";
 import { Container, Icons, MenuWrapper, Section } from "./style";
+import { useSearch } from "../../hooks/useSearch";
 
 const Filter = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const query = useSearch();
+
   const countryRef = useRef();
   const regionRef = useRef();
   const cityRef = useRef();
@@ -16,14 +23,42 @@ const Filter = () => {
   const minPriceRef = useRef();
   const maxPriceRef = useRef();
 
+  const onChange = ({ target: { name, value } }) => {
+    navigate(`${location?.pathname}${uzeReplace(name, value)}`);
+  };
+
   const menu = (
     <MenuWrapper>
       <h1 className="subTitle">Address</h1>
       <Section>
-        <Input ref={countryRef} placeholder="Country" />
-        <Input ref={regionRef} placeholder="Region" />
-        <Input ref={cityRef} placeholder="City" />
-        <Input ref={zipRef} placeholder="Zip Code" />
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("country")}
+          name="country"
+          ref={countryRef}
+          placeholder="Country"
+        />
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("region")}
+          name="region"
+          ref={regionRef}
+          placeholder="Region"
+        />
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("city")}
+          name="city"
+          ref={cityRef}
+          placeholder="City"
+        />
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("zip_code")}
+          name="zip_code"
+          ref={zipRef}
+          placeholder="Zip Code"
+        />
       </Section>
       <h1 className="subTitle">Apartment Info</h1>
       <Section>
@@ -52,6 +87,7 @@ const Filter = () => {
         overlay={menu}
         placement="bottomRight"
         arrow={{ pointAtCenter: true }}
+        trigger="click"
       >
         <div>
           <Button type={"light"}>

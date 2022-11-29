@@ -14,12 +14,13 @@ const Container = styled.div`
     drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06))
     drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
 
-  margin: 100px;
+  margin-bottom: 30px;
 `;
 
 const Img = styled.img`
   width: 100%;
   min-height: 220px;
+  max-height: 220px;
 `;
 
 const Content = styled.div`
