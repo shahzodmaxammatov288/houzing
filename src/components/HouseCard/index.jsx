@@ -16,16 +16,19 @@ const HouseCard = ({ data = {} }) => {
     country,
     description,
     houseDetails,
-    attachments
+    attachments,
+    category,
   } = data;
   return (
     <Container>
-      <Img src={attachments && attachments[0].imgPath || noimg} />
+      <Img src={(attachments && attachments[0].imgPath) || noimg} />
       <Content>
         <div className="subTitle inline">
           {city}, {country}, {description}
         </div>
-        <div className="info">{address || "Quincy St, Brooklyn, NY, USA"}</div>
+        <div className="info">
+          {address || "Quincy St, Brooklyn, NY, USA"} - {category?.name || "Category"}
+        </div>
         <Details>
           <Details.Item>
             <Icons.Bed />

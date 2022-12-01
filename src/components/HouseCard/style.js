@@ -7,7 +7,9 @@ import { ReactComponent as resize } from "../../assets/icons/resize 1.svg";
 import { ReactComponent as love } from "../../assets/icons/love.svg";
 
 const Container = styled.div`
-  width: 330px;
+  width: 100%;
+  max-width: 380px;
+  min-width: 330px;
   height: 430px;
 
   filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06))
@@ -19,7 +21,7 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  min-height: 220px;
+  min-height: 200px;
   max-height: 220px;
 `;
 
