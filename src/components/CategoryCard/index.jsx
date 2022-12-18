@@ -3,11 +3,11 @@ import noimg from "../../assets/img/noimg.jpg";
 import category from "../../assets/img/category.png";
 import { Blur } from "../Carousel/style";
 
-const CategoryCard = ({ data = {} }) => {
+const CategoryCard = ({ onClick, data = {} }) => {
   console.log(data);
   const { name } = data;
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Img src={category || noimg} />
       <Blur />
       <Content>{name || "Category Name"}</Content>
