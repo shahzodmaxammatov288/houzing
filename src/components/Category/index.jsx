@@ -34,7 +34,6 @@ const Category = () => {
   return (
     <Container>
       <div>
-        <h2>Center Mode</h2>
         <Slider {...settings}>
           {data.map((value) => {
             return (
