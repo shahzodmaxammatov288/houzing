@@ -34,12 +34,11 @@ const Category = () => {
   return (
     <Container>
       <div>
-        <h2>Center Mode</h2>
         <Slider {...settings}>
           {data.map((value) => {
             return (
               <CategoryCard
-                onClick={() => navigate(`/properties?category=${value?.name}`)}
+                onClick={() => navigate(`/properties?category_id=${value?.id}`)}
                 data={value}
               />
             );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Select } from "antd";
 
 import { ReactComponent as houses } from "../../assets/icons/houses.svg";
 import { ReactComponent as filter } from "../../assets/icons/setting-lines.svg";
@@ -40,4 +41,19 @@ const Section = styled.div`
   gap: 20px;
 `;
 
-export { Container, Icons, MenuWrapper, Section };
+const SelectAnt = styled(Select)`
+  min-width: 200px;
+  width: 100%;
+  max-width: 200px;
+
+  .ant-select-selector {
+    height: 44px !important;
+  }
+
+  .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export { Container, Icons, MenuWrapper, Section, SelectAnt };
