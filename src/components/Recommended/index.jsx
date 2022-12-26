@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import CategoryCard from "../CategoryCard";
+import HouseCard from "../HouseCard";
 
 import { Container, Content } from "./style";
 
@@ -15,44 +15,45 @@ const settings = {
   slidesToShow: 3,
   speed: 500,
   dots: true,
+  arrows: true,
+  adaptiveHeight: true,
 
   appendDots: (dots) => <h1>{dots}</h1>,
 };
 
-const Category = () => {
+const Recommended = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${url}/categories/list`)
+    fetch(`${url}/houses/list`)
       .then((res) => res.json())
       .then((res) => {
         setData(res?.data || []);
       });
   }, []);
-  console.log(data);
+
   return (
     <Container>
       <Content>
-        <h1 className="title">Category</h1>
+        <h1 className="title">Recommended</h1>
         <p className="info">
           Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
         </p>
       </Content>
-      <div>
-        <Slider {...settings}>
-          {data.map((value) => {
-            return (
-              <CategoryCard
-                onClick={() => navigate(`/properties?category_id=${value?.id}`)}
-                data={value}
-              />
-            );
-          })}
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        {data.map((value) => {
+          return (
+            <HouseCard
+              gap={20}
+              onClick={() => navigate(`/properties?category_id=${value?.id}`)}
+              data={value}
+            />
+          );
+        })}
+      </Slider>
     </Container>
   );
 };
 
-export default Category;
+export default Recommended;

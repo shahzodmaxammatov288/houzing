@@ -12,11 +12,19 @@ const Container = styled.div`
   min-width: 330px;
   height: 430px;
 
-  filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06))
-    drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06))
-    drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
+  background: #fff;
+  /* border: 1px solid #e6e9ec; */
 
-  margin-bottom: 30px;
+  padding: ${({ gap }) => {
+    return gap && `${gap}px`;
+  }};
+
+  :hover {
+    filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06))
+      drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06))
+      drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
+  }
+  cursor: pointer;
 `;
 
 const Img = styled.img`

@@ -4,7 +4,6 @@ import category from "../../assets/img/category.png";
 import { Blur } from "../Carousel/style";
 
 const CategoryCard = ({ onClick, data = {} }) => {
-  console.log(data);
   const { name } = data;
   return (
     <Container onClick={onClick}>
